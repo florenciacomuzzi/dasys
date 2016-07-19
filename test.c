@@ -2,6 +2,11 @@
 #include <time.h>
 #include <stdlib.h>
 
+// This code is designed to test the correctness of your implementation. 
+// You do not need to significantly change it. 
+// Compile and run it in the command line by typing: 
+// make test; ./test
+
 int main(void) {
 
   hashtable* ht=NULL;
@@ -46,6 +51,6 @@ int main(void) {
   }
 
   printf("Passed tests for erasing.\n");
-
+  printf("All tests have been successfully passed.\n");
   return 0;
 }
