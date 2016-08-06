@@ -27,12 +27,15 @@ int main(void) {
     printf("\t(%d -> %d) \n", keys[i], values[i]);
   }
 
+  int num_values = 1;
+  int results[num_values];
+
   for (int i = 0; i < num_tests; i += 1) {
     int index = rand() % num_tests;
     keyType target_key = keys[index];
-    valType target_value = get(ht, target_key);
-    if (target_value != values[index]) {
-      printf("Test failed with key %d. Got value %d. Expected value %d.\n", target_key, target_value, values[index]);
+    get(ht, target_key, results, num_values);
+    if (results[0] != values[index]) {
+      printf("Test failed with key %d. Got value %d. Expected value %d.\n", target_key, results[0], values[index]);
       return 1;
     } 
   }
@@ -43,8 +46,8 @@ int main(void) {
   for (int i = 0; i < num_tests; i += 1) {
     keyType target_key = keys[i];
     erase(ht, target_key);
-    valType value = get(ht, target_key);
-    if (value != -1) {
+    get(ht, target_key, results, num_values);
+    if (results[0] != -1) {
       printf("Test failed with key %d. Got value %d. Expected value %d.\n", target_key, values[i], -1);
       return 1;
     } 

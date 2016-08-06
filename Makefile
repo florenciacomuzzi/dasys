@@ -5,10 +5,10 @@ DEPS = hash_table.h
 	$(CC) -g -c -o $@ $< $ -I.
 
 main: hash_table.o main.o 
-	gcc -g -Og -o main hash_table.o main.o -I.
+	gcc -g -O0 -o main hash_table.o main.o -I.
 
 test: hash_table.o test.o 
-	gcc -g -Og -o test hash_table.o test.o -I.
+	gcc -g -O0 -o test hash_table.o test.o -I.
 
 benchmark: hash_table.o benchmark.o 
 	gcc -g -O3 -o benchmark hash_table.o benchmark.o -I.

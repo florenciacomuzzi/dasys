@@ -8,8 +8,15 @@ int main(void) {
   hashtable* ht=NULL;
   init(&ht);
 
-  put(ht, 0, 1);
-  get(ht, 0);
+  int key = 0;
+  int value = -1;
+
+  put(ht, key, value);
+
+  int num_values = 1;
+  int values[num_values];
+  
+  get(ht, 0, values, num_values);
   erase(ht, 0);
   return 0;
 }
