@@ -52,7 +52,7 @@ int main(void) {
       return 1;
     } 
   }
-
+  free(ht);
   printf("Passed tests for erasing.\n");
   printf("All tests have been successfully passed.\n");
   return 0;
