@@ -1,17 +1,21 @@
-CC=gcc
-DEPS = hash_table.h
+CC=gcc -std=c99
+CFLAGS = -ggdb3 -W -Wall -Wextra -Werror -O3
+LDFLAGS =
+LIBS =
 
-%.o: %.c $(DEPS)
-	$(CC) -g -c -o $@ $< $ -I.
+default: main test benchmark
+
+%.o: %.c %.h
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 main: hash_table.o main.o 
-	gcc -g -O0 -o main hash_table.o main.o -I.
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(LIBS)
 
 test: hash_table.o test.o 
-	gcc -g -O0 -o test hash_table.o test.o -I.
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(LIBS)
 
 benchmark: hash_table.o benchmark.o 
-	gcc -g -O3 -o benchmark hash_table.o benchmark.o -I.
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(LIBS)
 
 clean:
-	@rm -f main test benchmark *.o
+	rm -f main test benchmark *.o

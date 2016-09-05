@@ -1,14 +1,12 @@
 #ifndef HASH_TABLE_GUARD
 #define HASH_TABLE_GUARD
 
-#include <stdio.h>
+typedef struct hashtable {
+// define the components of the hash table here (e.g. the array, bookkeeping for number of elements, etc)
+} hashtable;
 
-typedef struct _hashtableStruct hashtableStruct;
-
-typedef hashtableStruct* hashtable;
 typedef int keyType;
 typedef int valType;
-
 
 void init(hashtable** ht);
 void put(hashtable* ht, keyType key, valType value);

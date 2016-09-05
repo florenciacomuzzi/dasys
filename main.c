@@ -1,12 +1,13 @@
-#include "hash_table.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-// This is where you can implement your own tests for the hash table implementation.
-// Compile and run it in the command line by typing: 
-// make main; ./main
+#include "hash_table.h"
+
+// This is where you can implement your own tests for the hash table
+// implementation. 
 int main(void) {
 
-  hashtable* ht=NULL;
+  hashtable *ht = NULL;
   init(&ht);
 
   int key = 0;
@@ -17,7 +18,7 @@ int main(void) {
   int num_values = 1;
 
   valType* values = malloc(1 * sizeof(valType));
-  
+
   int num_results = get(ht, key, values, num_values);
   if (num_results > num_values) {
     values = realloc(values, num_results * sizeof(valType));
