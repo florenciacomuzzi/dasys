@@ -1,6 +1,8 @@
-#include "hash_table.h"
 #include <time.h>
 #include <stdlib.h>
+#include <stdio.h>
+
+#include "hash_table.h"
 
 // This code is designed to test the correctness of your implementation. 
 // You do not need to significantly change it. 
@@ -14,7 +16,7 @@ int main(void) {
 
   int seed = 1;
   srand(seed);
-  int num_tests = 20;  
+  int num_tests = 20;
   keyType keys[num_tests];
   valType values[num_tests];
 
@@ -22,7 +24,7 @@ int main(void) {
   printf("Inserting %d key-value pairs.\n", num_tests);
   for (int i = 0; i < num_tests; i += 1) {
     keys[i] = rand();
-    values[i] = rand(); 
+    values[i] = rand();
     put(ht, keys[i], values[i]);
     printf("\t(%d -> %d) \n", keys[i], values[i]);
   }
