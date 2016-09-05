@@ -48,9 +48,9 @@ int main(void) {
   for (int i = 0; i < num_tests; i += 1) {
     keyType target_key = keys[i];
     erase(ht, target_key);
-    get(ht, target_key, results, num_values);
-    if (results[0] != -1) {
-      printf("Test failed with key %d. Got value %d. Expected value %d.\n", target_key, values[i], -1);
+    int num_matches = get(ht, target_key, results, num_values);
+    if (num_matches != 0) {
+      printf("Test failed with key %d. Expected it to be erased, but got %d matches.\n", target_key, num_matches);
       return 1;
     } 
   }
