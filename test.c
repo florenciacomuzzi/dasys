@@ -1,6 +1,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 
 #include "hash_table.h"
 
@@ -13,7 +14,7 @@ int main(void) {
 
   hashtable* ht=NULL;
   int num_tests = 20;
-  allocate(&ht, num_tests);
+  assert(allocate(&ht, num_tests));
 
   int seed = 1;
   srand(seed);
@@ -25,7 +26,7 @@ int main(void) {
   for (int i = 0; i < num_tests; i += 1) {
     keys[i] = rand();
     values[i] = rand();
-    put(ht, keys[i], values[i]);
+    assert(put(ht, keys[i], values[i]));
     printf("\t(%d -> %d) \n", keys[i], values[i]);
   }
 
@@ -36,7 +37,7 @@ int main(void) {
   for (int i = 0; i < num_tests; i += 1) {
     int index = rand() % num_tests;
     keyType target_key = keys[index];
-    get(ht, target_key, results, num_values, num_results);
+    assert(get(ht, target_key, results, num_values, num_results));
     if (results[0] != values[index]) {
       printf("Test failed with key %d. Got value %d. Expected value %d.\n", target_key, results[0], values[index]);
       return 1;
@@ -48,14 +49,14 @@ int main(void) {
 
   for (int i = 0; i < num_tests; i += 1) {
     keyType target_key = keys[i];
-    erase(ht, target_key);
-    get(ht, target_key, results, num_values, num_results);
+    assert(erase(ht, target_key));
+    assert(get(ht, target_key, results, num_values, num_results));
     if ((*num_results) != 0) {
       printf("Test failed with key %d. Expected it to be erased, but got %d matches.\n", target_key, *num_results);
       return 1;
     } 
   }
-  deallocate(ht);
+  assert(deallocate(ht));
   printf("Passed tests for erasing.\n");
   printf("All tests have been successfully passed.\n");
   return 0;

@@ -1,6 +1,7 @@
 #include <sys/time.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 
 #include "hash_table.h"
 
@@ -10,11 +11,13 @@
 // up. Compile and run it in the command line by typing:
 // make benchmark; ./benchmark
 
+
+
 int main(void) {
 
   hashtable* ht=NULL;
   int num_tests = 50000000;
-  allocate(&ht, num_tests);
+  assert(allocate(&ht, num_tests));
 
   int seed = 2;
   srand(seed);
@@ -26,14 +29,14 @@ int main(void) {
   for (int i = 0; i < num_tests; i += 1) {
     int key = rand();
     int val = rand();
-    put(ht, key, val);
+    assert(put(ht, key, val));
   }
 
   gettimeofday(&stop, NULL);
   double secs = (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec); 
   printf("50 million insertions took %f seconds\n", secs);
 
-  deallocate(ht);
+  assert(deallocate(ht));
 
   return 0;
 }
