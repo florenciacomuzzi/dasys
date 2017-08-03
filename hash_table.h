@@ -8,9 +8,10 @@ typedef struct hashtable {
 typedef int keyType;
 typedef int valType;
 
-void init(hashtable** ht);
-void put(hashtable* ht, keyType key, valType value);
-int get(hashtable* ht, keyType key, valType *values, int num_values);
-void erase(hashtable* ht, keyType key);
+int allocate(hashtable** ht, int size);
+int put(hashtable* ht, keyType key, valType value);
+int get(hashtable* ht, keyType key, valType *values, int num_values, int* num_results);
+int erase(hashtable* ht, keyType key);
+int deallocate(hashtable* ht);
 
 #endif

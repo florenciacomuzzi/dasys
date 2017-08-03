@@ -13,11 +13,11 @@
 int main(void) {
 
   hashtable* ht=NULL;
-  init(&ht);
+  int num_tests = 50000000;
+  allocate(&ht, num_tests);
 
   int seed = 2;
   srand(seed);
-  int num_tests = 50000000;
   printf("Performing stress test. Inserting 50 million keys.\n");
 
   struct timeval stop, start;
@@ -29,10 +29,11 @@ int main(void) {
     put(ht, key, val);
   }
 
-  free(ht);
   gettimeofday(&stop, NULL);
   double secs = (double)(stop.tv_usec - start.tv_usec) / 1000000 + (double)(stop.tv_sec - start.tv_sec); 
   printf("50 million insertions took %f seconds\n", secs);
+
+  deallocate(ht);
 
   return 0;
 }

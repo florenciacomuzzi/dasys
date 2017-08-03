@@ -8,7 +8,8 @@
 int main(void) {
 
   hashtable *ht = NULL;
-  init(&ht);
+  int size = 10;
+  allocate(&ht, size);
 
   int key = 0;
   int value = -1;
@@ -19,19 +20,21 @@ int main(void) {
 
   valType* values = malloc(1 * sizeof(valType));
 
-  int num_results = get(ht, key, values, num_values);
-  if (num_results > num_values) {
-    values = realloc(values, num_results * sizeof(valType));
-    get(ht, 0, values, num_results);
+  int* num_results = NULL;
+
+  get(ht, key, values, num_values, num_results);
+  if ((*num_results) > num_values) {
+    values = realloc(values, (*num_results) * sizeof(valType));
+    get(ht, 0, values, num_values, num_results);
   }
 
-  for (int i = 0; i < num_results; i++) {
+  for (int i = 0; i < (*num_results); i++) {
     printf("value %d is %d \n", i, values[i]);
   }
   free(values);
 
   erase(ht, 0);
 
-  free(ht);
+  deallocate(ht);
   return 0;
 }
