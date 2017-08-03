@@ -1,5 +1,5 @@
-#ifndef HASH_TABLE_GUARD
-#define HASH_TABLE_GUARD
+#ifndef CS165_HASH_TABLE // This is a header guard. It prevents the header from being included more than once.
+#define CS165_HASH_TABLE  
 
 typedef struct hashtable {
 // define the components of the hash table here (e.g. the array, bookkeeping for number of elements, etc)

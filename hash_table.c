@@ -21,7 +21,7 @@ int put(hashtable* ht, keyType key, valType value) {
     return 0;
 }
 
-// This method get entries with a matching key and stores the corresponding values in the
+// This method retrieves entries with a matching key and stores the corresponding values in the
 // values array. The size of the values array is given by the parameter
 // num_values. If there are more matching entries than num_values, they are not
 // stored in the values array to avoid a buffer overflow. The function returns
@@ -38,7 +38,7 @@ int get(hashtable* ht, keyType key, valType *values, int num_values, int* num_re
     return 0;
 }
 
-// This method erases a key-value pair from the hash table.
+// This method erases all key-value pairs with a given key from the hash table.
 // It returns an error code, 0 for success and -1 otherwise (e.g., if the hashtable is not allocated).
 int erase(hashtable* ht, keyType key) {
     (void) ht;
@@ -47,7 +47,7 @@ int erase(hashtable* ht, keyType key) {
 }
 
 // This method frees all memory occupied by the hash table.
-// It returns an error code, 0 for success and -1 otherwise (e.g., if the hashtable is already not allocated).
+// It returns an error code, 0 for success and -1 otherwise.
 int deallocate(hashtable* ht) {
     // This line tells the compiler that we know we haven't used the variable
     // yet so don't issue a warning. You should remove this line once you use
