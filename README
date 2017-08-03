@@ -15,3 +15,7 @@ make test; ./test
 To benchmark your code to determine how efficient your implementation is, run the benchmark:
 
 make benchmark; ./benchmark
+
+To build everything, you can just type:
+
+make
