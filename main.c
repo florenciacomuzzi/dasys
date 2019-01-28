@@ -29,7 +29,7 @@ int main(void) {
   }
 
   for (int i = 0; i < (*num_results); i++) {
-    printf("value %d is %d \n", i, values[i]);
+    printf("value of %d is %d \n", i, values[i]);
   }
   free(values);
 
